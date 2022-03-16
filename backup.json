@@ -1,0 +1,83 @@
+{
+  "carrinho": [
+    {
+      "id_carrinho": 1,
+      "fk_id_usuario": 1
+    },
+    {
+      "id_carrinho": 2,
+      "fk_id_usuario": 1
+    },
+    {
+      "id_carrinho": 3,
+      "fk_id_usuario": 2
+    },
+    {
+      "id_carrinho": 4,
+      "fk_id_usuario": 3
+    }
+  ],
+  "produto": [
+    {
+      "id_produto": 1,
+      "nome": "creme de avel\u00e3",
+      "marca": "Nutella",
+      "preco": 30.0,
+      "categoria": "doces",
+      "descricao": "pote com 650g",
+      "desconto": 0.03
+    },
+    {
+      "id_produto": 2,
+      "nome": "refrigerante",
+      "marca": "Coca-Cola",
+      "preco": 10.0,
+      "categoria": "bebidas",
+      "descricao": "garrafa pet de 2L",
+      "desconto": null
+    },
+    {
+      "id_produto": 3,
+      "nome": "macarr\u00e3o",
+      "marca": "Aurora",
+      "preco": 2.0,
+      "categoria": "massa",
+      "descricao": "500g",
+      "desconto": null
+    }
+  ],
+  "carrinho_produto": [
+    {
+      "fk_id_carrinho": 1,
+      "fk_id_produto": 1
+    },
+    {
+      "fk_id_carrinho": 1,
+      "fk_id_produto": 2
+    },
+    {
+      "fk_id_carrinho": 1,
+      "fk_id_produto": 2
+    },
+    {
+      "fk_id_carrinho": 1,
+      "fk_id_produto": 3
+    },
+    {
+      "fk_id_carrinho": 2,
+      "fk_id_produto": 1
+    },
+    {
+      "fk_id_carrinho": 2,
+      "fk_id_produto": 1
+    },
+    {
+      "fk_id_carrinho": 3,
+      "fk_id_produto": 1
+    },
+    {
+      "fk_id_carrinho": 4,
+      "fk_id_produto": 2
+    }
+  ]
+}
