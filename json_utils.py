@@ -6,7 +6,7 @@ def create_data(new_data, field_name):
         file_data = json.load(file)
         file_data[field_name].append(new_data)
         file.seek(0)
-        json.dump(file_data, file, indent=2)
+        json.dump(file_data, file, indent=4)
 
 
 def read_data(field_name=None):
@@ -68,6 +68,16 @@ def delete_data(field_name, column_name, value):
         json.dump(file_data, file, indent=4)
 
 
+def get_next_id(field_name, column_name):
+    data = read_data(field_name)
+    max_id = 0
+    for d in data:
+        if d[column_name] > max_id:
+            max_id = d[column_name]
+    
+    return max_id + 1
+
+
 # CRUD WITH JSON TESTS
 
 # Create
@@ -82,10 +92,10 @@ create_data(entry, "carrinho_produto") """
 
 # Update
 
-data_to_insert = {
+""" data_to_insert = {
     "fk_id_carrinho": 1,
     "fk_id_produto": 4
-}
+} """
 
 # Case where there are only one param of search
 """ update_data("carrinho_produto", ["fk_id_carrinho"], [1], data_to_insert) """
@@ -98,3 +108,7 @@ data_to_insert = {
 """ delete_data("carrinho_produto", ["fk_id_carrinho"], [1]) """
 # Case where there are two params of search
 """ delete_data("carrinho_produto", ["fk_id_carrinho", "fk_id_produto"], [1, 1]) """
+
+
+# Get next id
+""" print(get_next_id("produto", "id_produto"))  """

@@ -20,7 +20,7 @@
     "produto": [
         {
             "id_produto": 1,
-            "nome": "creme de avel\u00e3",
+            "nome": "creme de avelã",
             "marca": "Nutella",
             "preco": 30.0,
             "categoria": "doces",
@@ -38,7 +38,7 @@
         },
         {
             "id_produto": 3,
-            "nome": "macarr\u00e3o",
+            "nome": "macarrão",
             "marca": "Aurora",
             "preco": 2.0,
             "categoria": "massa",
