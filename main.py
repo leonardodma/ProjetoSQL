@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Query, Path, Body, Header
+from fastapi import FastAPI, Query, Path, Body, Header, HTTPException
 from enum import Enum
 from typing import Optional
 from pydantic import BaseModel, Field, HttpUrl
@@ -41,9 +41,15 @@ async def get_products(
     *, 
     id_produto: int = Path(..., title="The ID of the product to get", ge=1)
 ):
-    data = read_data("produto")
-    filtered = list(filter(lambda x: x["id_produto"] == id_produto, data))[0]
-    return {"produto": filtered}
+
+    id_exists = check_id("produto", "id_produto", id_produto)
+
+    if not id_exists:
+        raise HTTPException(status_code=404, detail="Product not found")
+    else:
+        data = read_data("produto")
+        filtered = list(filter(lambda x: x["id_produto"] == id_produto, data))[0]
+        return {"produto": filtered}
 
 
 @app.post("/products/create/")
@@ -92,13 +98,44 @@ async def update_product(
             }
         })
 ):
-    data = read_data("produto")
-    filtered = list(filter(lambda x: x["id_produto"] == id_produto, data))[0]
-    json_filtered = jsonable_encoder(filtered)
-    
-    product.id_produto = json_filtered['id_produto']
-    json_produto = jsonable_encoder(product)
-    print(json_produto)
-    update_data("produto", ["id_produto"], [id_produto], json_produto)
+    id_exists = check_id("produto", "id_produto", id_produto)
 
-    return {"message": "success"}
+    if not id_exists:
+        raise HTTPException(status_code=404, detail="Product not found")
+    else:
+        data = read_data("produto")
+        filtered = list(filter(lambda x: x["id_produto"] == id_produto, data))[0]
+        json_filtered = jsonable_encoder(filtered)
+        
+        product.id_produto = json_filtered['id_produto']
+        json_produto = jsonable_encoder(product)
+        update_data("produto", ["id_produto"], [id_produto], json_produto)
+
+        return {"message": "success"}
+
+
+@app.delete("/products/delete/{id_produto}")
+async def delete_product(
+    *,
+    id_produto: int = Path(..., title="The ID of the product to get", ge=1),
+):
+    id_exists = check_id("produto", "id_produto", id_produto)
+
+    if not id_exists:
+        raise HTTPException(status_code=404, detail="Product not found")
+    else:
+        delete_data("produto", ["id_produto"], [id_produto])
+    
+        return {"message": "success"}
+
+
+# *********************************************************************************#
+##################################### Carrinho #####################################
+# *********************************************************************************#
+
+
+
+
+# *********************************************************************************#
+################################ Produto Carrinho ##################################
+# *********************************************************************************#

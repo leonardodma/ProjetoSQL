@@ -5,6 +5,7 @@ def create_data(new_data, field_name):
     with open('data.json', 'r+', encoding='utf-8') as file:
         file_data = json.load(file)
         file_data[field_name].append(new_data)
+        file.truncate(0)
         file.seek(0)
         json.dump(file_data, file, indent=4)
 
@@ -43,9 +44,8 @@ def update_data(field_name, column_name, value, data_to_insert):
         file_data = json.load(file)
         del file_data[field_name]
         file_data[field_name] = new_data
+        file.truncate(0)
         file.seek(0)
-        """ j = json.dumps(file_data, indent=4)
-        print(j) """
         json.dump(file_data, file, ensure_ascii=False, indent=4)
 
 
@@ -67,6 +67,7 @@ def delete_data(field_name, column_name, value):
         file_data = json.load(file)
         del file_data[field_name]
         file_data[field_name] = new_data
+        file.truncate(0)
         file.seek(0)
         json.dump(file_data, file, indent=4)
 
@@ -80,6 +81,16 @@ def get_next_id(field_name, column_name):
     
     return max_id + 1
 
+
+def check_id(field_name, column_name, id):
+    data = read_data(field_name)
+
+    id_found = False
+    for d in data:
+        if d[column_name] == id:
+            id_found = True
+    
+    return id_found
 
 # CRUD WITH JSON TESTS
 
@@ -115,3 +126,6 @@ create_data(entry, "carrinho_produto") """
 
 # Get next id
 """ print(get_next_id("produto", "id_produto"))  """
+
+# Check if id exists
+""" print(check_id("produto", "id_produto", 4)) """
