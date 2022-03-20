@@ -36,3 +36,12 @@ Outros:
 - HEAD
 - PATCH
 - TRACE
+
+### Exemplo 2
+```python
+# query parameters
+# function parameters that are not part of the path parameters
+@app.get("/items/{item_id}")
+async def read_item(item_id):
+    return {"item_id": item_id}
+```
