@@ -37,13 +37,16 @@ def update_data(field_name, column_name, value, data_to_insert):
                 new_data.append(data_to_insert)
             else:
                 new_data.append(d)
+    
 
     with open('data.json', 'r+', encoding='utf-8') as file:
         file_data = json.load(file)
         del file_data[field_name]
         file_data[field_name] = new_data
         file.seek(0)
-        json.dump(file_data, file, indent=4)
+        """ j = json.dumps(file_data, indent=4)
+        print(j) """
+        json.dump(file_data, file, ensure_ascii=False, indent=4)
 
 
 def delete_data(field_name, column_name, value):
