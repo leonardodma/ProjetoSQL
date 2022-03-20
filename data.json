@@ -6,55 +6,68 @@
         },
         {
             "id_carrinho": 2,
-            "fk_id_usuario": 1
-        },
-        {
-            "id_carrinho": 3,
             "fk_id_usuario": 2
         },
         {
-            "id_carrinho": 4,
+            "id_carrinho": 3,
             "fk_id_usuario": 3
+        },
+        {
+            "id_carrinho": 4,
+            "fk_id_usuario": 4
         }
     ],
     "carrinho_produto": [
         {
             "fk_id_carrinho": 1,
-            "fk_id_produto": 1
+            "fk_id_produto": 1,
+            "quantidade": 1
         },
         {
             "fk_id_carrinho": 1,
-            "fk_id_produto": 2
+            "fk_id_produto": 2,
+            "quantidade": 1
         },
         {
             "fk_id_carrinho": 1,
-            "fk_id_produto": 2
+            "fk_id_produto": 2,
+            "quantidade": 1
         },
         {
             "fk_id_carrinho": 1,
-            "fk_id_produto": 3
+            "fk_id_produto": 3,
+            "quantidade": 4
         },
         {
             "fk_id_carrinho": 2,
-            "fk_id_produto": 1
+            "fk_id_produto": 1,
+            "quantidade": 2
         },
         {
             "fk_id_carrinho": 2,
-            "fk_id_produto": 1
+            "fk_id_produto": 1,
+            "quantidade": 1
         },
         {
             "fk_id_carrinho": 3,
-            "fk_id_produto": 1
+            "fk_id_produto": 1,
+            "quantidade": 3
         },
         {
             "fk_id_carrinho": 4,
-            "fk_id_produto": 2
+            "fk_id_produto": 2,
+            "quantidade": 1
+        },
+        {
+            "fk_id_carrinho": null,
+            "fk_id_produto": 3,
+            "quantidade": 4
         }
     ],
     "produto": [
         {
             "id_produto": 1,
-            "nome": "creme de avelã",
+            "nome": "creme de avel\u00e3",
             "marca": "Nutella",
             "preco": 30.0,
             "categoria": "doces",
@@ -73,6 +86,15 @@
         {
             "id_produto": 3,
             "nome": "string2",
+            "marca": "string",
+            "preco": 10.5,
+            "categoria": "string",
+            "descricao": "string",
+            "desconto": 0.2
+        },
+        {
+            "id_produto": 4,
+            "nome": "string",
             "marca": "string",
             "preco": 10.5,
             "categoria": "string",
