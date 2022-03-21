@@ -27,13 +27,13 @@ class ProductsIn(BaseModel):
     desconto: Optional[float] = Field(None, ge=0, le=1)
 
 @app.get("/products/", tags=["Produto"])
-async def get_products():
+async def get_all_products():
     data = read_data("produto")
     return {"produtos": data}
 
 
 @app.get("/products/{id_produto}", tags=["Produto"])
-async def get_products(
+async def get_product(
     *, 
     id_produto: int = Path(..., title="The ID of the product to get", ge=1)
 ):
@@ -48,8 +48,9 @@ async def get_products(
         return {"produto": filtered}
 
 
-@app.post("/products/create/", tags=["Produto"])
-async def create_product_by_id(
+# Create itens
+@app.post("/products/", tags=["Produto"])
+async def create_product(
     product: ProductsIn= Body(
         ...,
         examples={
@@ -73,8 +74,9 @@ async def create_product_by_id(
     return {"message": "success"}
 
 
-@app.post("/products/update/{id_produto}", tags=["Produto"])
-async def update_product(
+# Replace itens
+@app.patch("/products/{id_produto}", tags=["Produto"])
+async def replace_product(
     *,
     id_produto: int = Path(..., title="The ID of the product to get", ge=1),
     product: ProductsIn= Body(
@@ -110,7 +112,8 @@ async def update_product(
         return {"message": "success"}
 
 
-@app.delete("/products/delete/{id_produto}", tags=["Produto"])
+# Delete data
+@app.delete("/products/{id_produto}", tags=["Produto"])
 async def delete_product(
     *,
     id_produto: int = Path(..., title="The ID of the product to get", ge=1),
@@ -140,7 +143,7 @@ async def get_all_carts():
     data = read_data("carrinho")
     return {"carrinho": data}
 
-@app.post("/cart/create/", tags=["Carrinho"])
+@app.post("/cart/", tags=["Carrinho"])
 async def create_cart(
     cart: CartIn= Body(
         ...,
@@ -160,7 +163,7 @@ async def create_cart(
     create_data(json_carrinho, "carrinho")
     return {"message": "success"}
 
-@app.delete("/cart/delete/{id_carrinho}", tags=["Carrinho"])
+@app.delete("/cart/{id_carrinho}", tags=["Carrinho"])
 async def delete_cart(
     *,
     id_carrinho: int = Path(..., title="The ID of the cart to get", ge=1)
@@ -174,7 +177,6 @@ async def delete_cart(
         delete_data("carrinho", ["id_carrinho"], [id_carrinho])
 
         return {"message": "success"}
-
 
 
 # *********************************************************************************#
@@ -203,9 +205,7 @@ async def get_cart_products(
         return {"carrinho_produto": filtered}
 
 
-
-
-@app.post("/cart/addprod/{id_carrinho}", tags=["Carrinho-produto"])
+@app.patch("/cart/{id_carrinho}", tags=["Carrinho-produto"])
 async def update_cart_product(
     *,
     id_carrinho: int = Path(..., title="The ID of the cart to get", ge=1),
@@ -233,7 +233,7 @@ async def update_cart_product(
         return {"message": "success"}
 
 
-@app.delete("/cart/deleteprod/{id_carrinho}/{id_produto}", tags=["Carrinho-produto"])
+@app.delete("/cart/{id_carrinho}/{id_produto}", tags=["Carrinho-produto"])
 async def delete_cart_product(
     *,
     id_carrinho: int = Path(..., title="The ID of the cart to get", ge=1),
