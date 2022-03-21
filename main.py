@@ -129,6 +129,59 @@ async def replace_product(
 
         return {"message": "success"}
 
+# # Update itens
+
+'''
+Para atualizar de verdade vamos ter que pegar o item que 
+vai ser atualizado e fazer essa mudança modular
+'''
+
+# @app.put("/products/{id_produto}", tags=["Produto"])
+# async def update_product(
+#     *,
+#     id_produto: int = Path(..., title="The ID of the product to get", ge=1),
+#     product: ProductsIn= Body(
+#         ...,
+#         examples={
+#             "normal": {
+#                 "summary": "A normal example",
+#                 "description": "A **normal** request to update.",
+#                 "value": {
+#                     "nome": "string",
+#                     "marca": "string",
+#                     "preco": 10.50,
+#                     "categoria": "string",
+#                     "descricao": "string",
+#                     "desconto": 0.2,
+#                 },
+#             },
+#             "mandatory": {
+#                 "summary": "Mandatory example",
+#                 "description": "A **mandatory** request to create a product has to set these parameters.",
+#                 "value": {
+#                     "nome": "string",
+#                     "preco": 10.50,
+#                     "categoria": "string"
+#                 },
+#             }           
+#         })
+# ):
+#     id_exists = check_id("produto", "id_produto", id_produto)
+
+#     if not id_exists:
+#         raise HTTPException(status_code=404, detail="Product not found")
+#     else:
+#         data = read_data("produto")
+#         filtered = list(filter(lambda x: x["id_produto"] == id_produto, data))[0]
+#         json_filtered = jsonable_encoder(filtered)
+        
+#         product.id_produto = json_filtered['id_produto']
+#         json_produto = jsonable_encoder(product)
+#         update_data("produto", ["id_produto"], [id_produto], json_produto)
+
+#         return {"message": "success"}
+
+
 
 # Delete data
 @app.delete("/products/{id_produto}", tags=["Produto"])
@@ -263,6 +316,40 @@ async def update_cart_product(
         create_data(json_carrinho, "carrinho_produto")
         
         return {"message": "success"}
+
+# @app.put("/cart/{id_carrinho}", tags=["Carrinho-produto"])
+# async def update_cart_product_real(
+#     *,
+#     id_carrinho: int = Path(..., title="The ID of the cart to get", ge=1),
+#     cart: Cart_productIn= Body(
+#         ...,
+#         examples={
+#             "normal": {
+#                 "summary": "A normal example",
+#                 "description": "A **normal** request to create a product.",
+#                 "value": {
+#                     "fk_id_produto": 1,
+#                     "quantidade": 5
+#                 },
+#             },
+#             "mandatory": {
+#                 "summary": "A mandatory example",
+#                 "description": "A **mandatory** request to create a cart doesn't have any mandatory parameters.",
+#                 "value": {
+
+#                 },
+#             }
+#         })
+# ):
+#     id_exists = check_id("carrinho", "id_carrinho", id_carrinho)
+
+#     if not id_exists:
+#         raise HTTPException(status_code=404, detail="Cart not found")
+#     else:
+#         json_carrinho = jsonable_encoder(cart)
+#         create_data(json_carrinho, "carrinho_produto")
+        
+#         return {"message": "success"}
 
 
 @app.delete("/cart/{id_carrinho}/{id_produto}", tags=["Carrinho-produto"])
