@@ -49,7 +49,7 @@ async def get_products(
 
 
 @app.post("/products/create/", tags=["Produto"])
-async def create_product(
+async def create_product_by_id(
     product: ProductsIn= Body(
         ...,
         examples={
@@ -136,12 +136,12 @@ class CartIn(BaseModel):
 
 # Puxa lista de todos os carrinhos e seus donos
 @app.get("/cart/", tags=["Carrinho"])
-async def get_products():
+async def get_all_carts():
     data = read_data("carrinho")
     return {"carrinho": data}
 
 @app.post("/cart/create/", tags=["Carrinho"])
-async def create_product(
+async def create_cart(
     cart: CartIn= Body(
         ...,
         examples={
@@ -161,7 +161,7 @@ async def create_product(
     return {"message": "success"}
 
 @app.delete("/cart/delete/{id_carrinho}", tags=["Carrinho"])
-async def delete_product(
+async def delete_cart(
     *,
     id_carrinho: int = Path(..., title="The ID of the cart to get", ge=1)
 ):
@@ -188,7 +188,7 @@ class Cart_productIn(BaseModel):
 
 # Se o id_carrinho existe em "carrinho", puxamos seus dados em "carrinho_produto"
 @app.get("/cart/{id_carrinho}", tags=["Carrinho-produto"])
-async def get_products(
+async def get_cart_products(
     *, 
     id_carrinho: int = Path(..., title="The ID of the cart to get", ge=1)
 ):
@@ -206,7 +206,7 @@ async def get_products(
 
 
 @app.post("/cart/addprod/{id_carrinho}", tags=["Carrinho-produto"])
-async def update_product(
+async def update_cart_product(
     *,
     id_carrinho: int = Path(..., title="The ID of the cart to get", ge=1),
     cart: Cart_productIn= Body(
@@ -234,10 +234,10 @@ async def update_product(
 
 
 @app.delete("/cart/deleteprod/{id_carrinho}/{id_produto}", tags=["Carrinho-produto"])
-async def delete_product(
+async def delete_cart_product(
     *,
     id_carrinho: int = Path(..., title="The ID of the cart to get", ge=1),
-    id_produto: int = Path(..., title="The ID of the cart to get", ge=1)
+    id_produto: int = Path(..., title="The ID of the product to get", ge=1)
 
 ):
     id_exists = check_id("carrinho", "id_carrinho", id_carrinho)
