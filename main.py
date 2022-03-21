@@ -224,7 +224,7 @@ async def create_cart(
         examples={
             "normal": {
                 "summary": "A normal example",
-                "description": "A **normal** request to create a product.",
+                "description": "A **normal** request to create a cart.",
                 "value": {
                     "id_carrinho": 1,
                     "fk_id_usuario": 1,
@@ -295,7 +295,7 @@ async def update_cart_product(
         examples={
             "normal": {
                 "summary": "A normal example",
-                "description": "A **normal** request to create a product.",
+                "description": "A **normal** request to create a cart-product.",
                 "value": {
                     "fk_id_produto": 1,
                     "quantidade": 5
@@ -303,7 +303,7 @@ async def update_cart_product(
             },
             "mandatory": {
                 "summary": "A mandatory example",
-                "description": "A **mandatory** request to create a cart doesn't have any mandatory parameters.",
+                "description": "A **mandatory** request to create a cart-product doesn't have any mandatory parameters.",
                 "value": {
 
                 },
@@ -335,7 +335,7 @@ async def update_cart_product_real(
         examples={
             "normal": {
                 "summary": "A normal example",
-                "description": "A **normal** request to create a product.",
+                "description": "A **normal** request to create a cart-product.",
                 "value": {
                     "fk_id_produto": 1,
                     "quantidade": 5
@@ -343,7 +343,7 @@ async def update_cart_product_real(
             },
             "mandatory": {
                 "summary": "A mandatory example",
-                "description": "A **mandatory** request to create a cart doesn't have any mandatory parameters.",
+                "description": "A **mandatory** request to cart-product a cart doesn't have any mandatory parameters.",
                 "value": {
 
                 },
