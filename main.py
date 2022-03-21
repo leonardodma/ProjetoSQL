@@ -55,7 +55,7 @@ async def create_product(
         ...,
         examples={
             "normal": {
-                "summary": "A normal example",
+                "summary": "Normal example",
                 "description": "A **normal** request to create a product.",
                 "value": {
                     "nome": "string",
@@ -64,6 +64,15 @@ async def create_product(
                     "categoria": "string",
                     "descricao": "string",
                     "desconto": 0.2,
+                },
+            },
+            "mandatory": {
+                "summary": "Mandatory example",
+                "description": "A **mandatory** request to create a product has to set these parameters.",
+                "value": {
+                    "nome": "string",
+                    "preco": 10.50,
+                    "categoria": "string"
                 },
             }
         })
@@ -93,7 +102,16 @@ async def replace_product(
                     "descricao": "string",
                     "desconto": 0.2,
                 },
-            }
+            },
+            "mandatory": {
+                "summary": "Mandatory example",
+                "description": "A **mandatory** request to create a product has to set these parameters.",
+                "value": {
+                    "nome": "string",
+                    "preco": 10.50,
+                    "categoria": "string"
+                },
+            }           
         })
 ):
     id_exists = check_id("produto", "id_produto", id_produto)
@@ -152,7 +170,14 @@ async def create_cart(
                 "summary": "A normal example",
                 "description": "A **normal** request to create a product.",
                 "value": {
-                    "id_usuario": None,
+                    "id_carrinho": 1,
+                    "fk_id_usuario": 1,
+                }, 
+            },
+            "mandatory": {
+                "summary": "A mandatory example",
+                "description": "A **mandatory** request to create a cart doesn't have any mandatory parameters.",
+                "value": {
                 },
             }
         }
@@ -219,6 +244,13 @@ async def update_cart_product(
                     "fk_id_produto": 1,
                     "quantidade": 5
                 },
+            },
+            "mandatory": {
+                "summary": "A mandatory example",
+                "description": "A **mandatory** request to create a cart doesn't have any mandatory parameters.",
+                "value": {
+
+                },
             }
         })
 ):
@@ -248,6 +280,7 @@ async def delete_cart_product(
         delete_data("carrinho_produto", ["fk_id_carrinho", "fk_id_produto"], [id_carrinho, id_produto])
 
         return {"message": "success"}
+
 
 
 
