@@ -6,73 +6,26 @@
         },
         {
             "id_carrinho": 2,
-            "fk_id_usuario": 2
+            "fk_id_usuario": 1
         },
         {
             "id_carrinho": 3,
-            "fk_id_usuario": 3
+            "fk_id_usuario": 2
         },
         {
             "id_carrinho": 4,
-            "fk_id_usuario": 4
-        }
-    ],
-    "carrinho_produto": [
-        {
-            "fk_id_carrinho": 1,
-            "fk_id_produto": 1,
-            "quantidade": 1
-        },
-        {
-            "fk_id_carrinho": 1,
-            "fk_id_produto": 2,
-            "quantidade": 1
-        },
-        {
-            "fk_id_carrinho": 1,
-            "fk_id_produto": 2,
-            "quantidade": 1
-        },
-        {
-            "fk_id_carrinho": 1,
-            "fk_id_produto": 3,
-            "quantidade": 4
-        },
-        {
-            "fk_id_carrinho": 2,
-            "fk_id_produto": 1,
-            "quantidade": 2
-        },
-        {
-            "fk_id_carrinho": 2,
-            "fk_id_produto": 1,
-            "quantidade": 1
-        },
-        {
-            "fk_id_carrinho": 3,
-            "fk_id_produto": 1,
-            "quantidade": 3
-        },
-        {
-            "fk_id_carrinho": 4,
-            "fk_id_produto": 2,
-            "quantidade": 1
-        },
-        {
-            "fk_id_carrinho": null,
-            "fk_id_produto": 3,
-            "quantidade": 4
+            "fk_id_usuario": 3
         }
     ],
     "produto": [
         {
             "id_produto": 1,
-            "nome": "creme de avel\u00e3",
+            "nome": "creme de avelã",
             "marca": "Nutella",
-            "preco": 30.0,
+            "preco": 50.0,
             "categoria": "doces",
             "descricao": "pote com 650g",
-            "desconto": 0.03
+            "desconto": 0.9
         },
         {
             "id_produto": 2,
@@ -85,21 +38,44 @@
         },
         {
             "id_produto": 3,
-            "nome": "string2",
-            "marca": "string",
-            "preco": 10.5,
-            "categoria": "string",
-            "descricao": "string",
-            "desconto": 0.2
+            "nome": "macarrão",
+            "marca": "Aurora",
+            "preco": 2.0,
+            "categoria": "massa",
+            "descricao": "500g",
+            "desconto": null
+        }
+    ],
+    "carrinho_produto": [
+        {
+            "fk_id_carrinho": 1,
+            "fk_id_produto": 1,
+            "quantidade": 5
         },
         {
-            "id_produto": 4,
-            "nome": "string",
-            "marca": "string",
-            "preco": 10.5,
-            "categoria": "string",
-            "descricao": "string",
-            "desconto": 0.2
+            "fk_id_carrinho": 1,
+            "fk_id_produto": 2,
+            "quantidade": 4
+        },
+        {
+            "fk_id_carrinho": 1,
+            "fk_id_produto": 3,
+            "quantidade": 5
+        },
+        {
+            "fk_id_carrinho": 2,
+            "fk_id_produto": 1,
+            "quantidade": 5
+        },
+        {
+            "fk_id_carrinho": 3,
+            "fk_id_produto": 1,
+            "quantidade": 5
+        },
+        {
+            "fk_id_carrinho": 4,
+            "fk_id_produto": 2,
+            "quantidade": 5
         }
     ]
 }
