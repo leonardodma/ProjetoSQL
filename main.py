@@ -266,7 +266,7 @@ class CartProductIn(BaseModel):
 # Se o id_carrinho existe em "carrinho", puxamos seus dados em "carrinho_produto"
 
 
-@app.get("/cart/{id_carrinho}", tags=["Carrinho-produto"])
+@app.get("/cart/{id_carrinho}", tags=["Carrinho Produto"])
 async def get_cart_products(
     *,
     id_carrinho: int = Path(..., title="The ID of the cart to get", ge=1)
@@ -283,7 +283,7 @@ async def get_cart_products(
         return {"carrinho_produto": filtered}
 
 
-@app.put("/cart/{id_carrinho}/{id_produto}", tags=["Carrinho-produto"])
+@app.put("/cart/{id_carrinho}/{id_produto}", tags=["Carrinho Produto"])
 async def update_cart_product(
     *,
     id_carrinho: int = Path(..., title="The ID of the cart to get", ge=1),
@@ -321,7 +321,7 @@ async def update_cart_product(
         return {"message": "success"}
 
 
-@app.delete("/cart/{id_carrinho}/{id_produto}", tags=["Carrinho-produto"])
+@app.delete("/cart/{id_carrinho}/{id_produto}", tags=["Carrinho Produto"])
 async def delete_cart_product(
     *,
     id_carrinho: int = Path(..., title="The ID of the cart to get", ge=1),
