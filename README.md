@@ -21,7 +21,3 @@ Para rodar nossa aplicação:
 python -m uvicorn main:app --reload
 ```
 Acesse  [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) para fazer o teste da aplicação!
-
-## Feedback pré-entrega:
-- [X] Consertar a documentação e os exemplos
-- [] Criar o update corretamente, hoje temos o patch
